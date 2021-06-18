@@ -2,7 +2,7 @@
 
 az group create \
 --name RG-12-APPGW \
---location westeurope
+--location eastus
 
 az network vnet create \
 --resource-group RG-12-APPGW \
@@ -56,6 +56,7 @@ az vm create \
   --admin-username adminuser \
   --admin-password adminadmin123! \
   --image UbuntuLTS \
+  --size Standard_B1s \
   --vnet-name AZ104-vNET \
   --nsg NSG-VM-01 \
   --subnet BACKEND-SUBNET
@@ -66,7 +67,7 @@ az vm extension set \
   --name CustomScript \
   --vm-name VM-01 \
   --resource-group RG-12-APPGW \
-  --settings '{"commandToExecute":"apt-get -y update && apt-get -y install apache2 && rm -rf /var/www/html && git clone https://github.com/XaaSTechnologies/AppGw-Default-Web-Page.github.io.git /var/www/html/"}'
+  --settings '{"commandToExecute":"apt-get -y update && apt-get -y install apache2 && rm -rf /var/www/html && git clone https://github.com/bluwavemarshall/AppGw-Default-Web-Page.github.io.git /var/www/html/"}'
 
 # NSG for VM-02
 az network nsg create \
@@ -107,6 +108,7 @@ az vm create \
   --admin-username adminuser \
   --admin-password adminadmin123! \
   --image UbuntuLTS \
+  --size Standard_B1s \
   --vnet-name AZ104-vNET \
   --nsg NSG-VM-02 \
   --subnet BACKEND-SUBNET
@@ -117,7 +119,7 @@ az vm extension set \
   --name CustomScript \
   --vm-name VM-02 \
   --resource-group RG-12-APPGW \
-  --settings '{"commandToExecute":"apt-get -y update && apt-get -y install apache2 && rm -rf /var/www/html && git clone https://github.com/XaaSTechnologies/AppGw-Images-Web-Server.github.io.git /var/www/html/images"}'
+  --settings '{"commandToExecute":"apt-get -y update && apt-get -y install apache2 && rm -rf /var/www/html && git clone https://github.com/bluwavemarshall/AppGw-Images-Web-Server.github.io.git /var/www/html/images"}'
 
 
 # NSG for VM-03
@@ -159,6 +161,7 @@ az vm create \
   --admin-username adminuser \
   --admin-password adminadmin123! \
   --image UbuntuLTS \
+  --size Standard_B1s \
   --vnet-name AZ104-vNET \
   --nsg NSG-VM-03 \
   --subnet BACKEND-SUBNET
@@ -169,5 +172,5 @@ az vm extension set \
   --name CustomScript \
   --vm-name VM-03 \
   --resource-group RG-12-APPGW \
-  --settings '{"commandToExecute":"apt-get -y update && apt-get -y install apache2 && rm -rf /var/www/html && git clone https://github.com/XaaSTechnologies/AppGw-Video-Web-Server.github.io.git /var/www/html/video"}'
+  --settings '{"commandToExecute":"apt-get -y update && apt-get -y install apache2 && rm -rf /var/www/html && git clone https://github.com/bluwavemarshall/AppGw-Video-Web-Server.github.io.git /var/www/html/video"}'
 
